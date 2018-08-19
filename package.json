@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/lucasfronza/react-native-fetching-indicator/issues"
   },
-  "homepage": "https://github.com/lucasfronza/react-native-fetching-indicator#readme"
+  "homepage": "https://github.com/lucasfronza/react-native-fetching-indicator#readme",
+  "dependencies": {
+    "prop-types": "15.6.2"
+  }
 }

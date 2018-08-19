@@ -11,6 +11,7 @@ import {
 const { width, height } = Dimensions.get('window')
 
 const screenWidth = width < height ? width : height
+const screenHeight = width < height ? height : width
 
 class FetchingIndicator extends Component {
   render () {
@@ -21,7 +22,7 @@ class FetchingIndicator extends Component {
       <TouchableOpacity onPress={() => {}} activeOpacity={0.8} style={{
         position: 'absolute',
         width: screenWidth,
-        height: '100%',
+        height: screenHeight,
         left: 0,
         top: 0,
         justifyContent: 'center',

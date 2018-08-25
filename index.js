@@ -9,16 +9,15 @@ import {
   Text
 } from 'react-native'
 
-const { width, height } = Dimensions.get('window')
-
-const screenWidth = width < height ? width : height
-const screenHeight = width < height ? height : width
-
 class FetchingIndicator extends Component {
   render () {
     if (!this.props.isFetching) {
       return null
     }
+    const { width, height } = Dimensions.get('window')
+    const screenWidth = width
+    const screenHeight = height
+    const circleSize = (screenWidth < screenHeight ? screenWidth : screenHeight) * 0.16
     return (
       <TouchableOpacity onPress={this.props.onBackdropPress} activeOpacity={this.props.backdropActiveOpacity} style={{
         position: 'absolute',
@@ -31,14 +30,14 @@ class FetchingIndicator extends Component {
         backgroundColor: this.props.backdropColor
       }}>
         <View style={{
-          width: screenWidth * 0.16,
-          height: screenWidth * 0.16,
-          borderRadius: screenWidth * 0.16 / 2,
+          width: circleSize,
+          height: circleSize,
+          borderRadius: circleSize / 2,
           justifyContent: 'center',
           alignItems: 'center',
           backgroundColor: 'white'
         }}>
-          <ActivityIndicator size={Platform.OS === 'ios' ? 'small' : screenWidth * 0.09} color={this.props.color} style={{alignSelf: 'center'}} />
+          <ActivityIndicator size={Platform.OS === 'ios' ? 'small' : circleSize * 0.5} color={this.props.color} style={{alignSelf: 'center'}} />
         </View>
         {this.props.message !== '' && this.props.message != null && <Text style={[{fontSize: 20, color: 'white', textAlign: 'center', marginTop: 5}, this.props.messageStyle]}>
           {this.props.message}

@@ -5,7 +5,8 @@ import {
   Dimensions,
   Platform,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  Text
 } from 'react-native'
 
 const { width, height } = Dimensions.get('window')
@@ -27,7 +28,7 @@ class FetchingIndicator extends Component {
         top: 0,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.40)'
+        backgroundColor: 'rgba(0, 0, 0, 0.50)'
       }}>
         <View style={{
           width: screenWidth * 0.16,
@@ -39,6 +40,9 @@ class FetchingIndicator extends Component {
         }}>
           <ActivityIndicator size={Platform.OS === 'ios' ? 'small' : screenWidth * 0.09} /* color='blue' */ style={{alignSelf: 'center'}} />
         </View>
+        {this.props.message !== '' && this.props.message != null && <Text style={{fontSize: 20, color: 'white', textAlign: 'center', marginTop: 5}}>
+          {this.props.message}
+        </Text>}
       </TouchableOpacity>
     )
   }
@@ -46,12 +50,14 @@ class FetchingIndicator extends Component {
 
 FetchingIndicator.propTypes = {
   isFetching: PropTypes.bool,
-  cancelable: PropTypes.bool
+  cancelable: PropTypes.bool,
+  message: PropTypes.string
 }
 
 FetchingIndicator.defaultProps = {
   isFetching: false,
-  cancelable: false
+  cancelable: false,
+  message: null
 }
 
 export default FetchingIndicator

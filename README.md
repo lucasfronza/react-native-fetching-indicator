@@ -14,6 +14,8 @@ import FetchingIndicator from 'react-native-fetching-indicator'
 <FetchingIndicator isFetching={this.props.isFetching} /> // good option if you want to control this component with Redux
 <FetchingIndicator isFetching={false} />
 <FetchingIndicator isFetching /> // same as <FetchingIndicator isFetching={true} />
+...
+<FetchingIndicator isFetching message='Loading' color='blue' onBackdropPress={() => { ... }} />
 ```
 
 PRO TIP 1: Put this component as the last element of a screen  
@@ -23,6 +25,12 @@ PRO TIP 2: Put this component as the last element of your higher view hierarchy,
 | Prop | Type | Default | Note |
 |---|---|---|---|
 | **`isFetching`** | `boolean` | `false` | Hide or show fetching indicator |
+| **`color`** | `color` | `undefined` | `ActivityIndicator` color |
+| **`message`** | `string` | `null` | Message to show below `ActivityIndicator` |
+| **`messageStyle`** | `style` | `{}` | Message style |
+| **`backdropColor`** | `color` | `'rgba(0, 0, 0, 0.50)'` | Backdrop background color |
+| **`backdropActiveOpacity`** | `number` | `0.8` | The opacity when backdrop is pressed |
+| **`onBackdropPress`** | `function` | `() => null` | Called when backdrop is pressed |
 
 ## Demo
 <img src="demo.gif" width="200">

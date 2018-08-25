@@ -20,7 +20,7 @@ class FetchingIndicator extends Component {
       return null
     }
     return (
-      <TouchableOpacity onPress={() => {}} activeOpacity={0.8} style={{
+      <TouchableOpacity onPress={this.props.onBackdropPress} activeOpacity={this.props.backdropActiveOpacity} style={{
         position: 'absolute',
         width: screenWidth,
         height: screenHeight,
@@ -28,7 +28,7 @@ class FetchingIndicator extends Component {
         top: 0,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.50)'
+        backgroundColor: this.props.backdropColor
       }}>
         <View style={{
           width: screenWidth * 0.16,
@@ -38,9 +38,9 @@ class FetchingIndicator extends Component {
           alignItems: 'center',
           backgroundColor: 'white'
         }}>
-          <ActivityIndicator size={Platform.OS === 'ios' ? 'small' : screenWidth * 0.09} /* color='blue' */ style={{alignSelf: 'center'}} />
+          <ActivityIndicator size={Platform.OS === 'ios' ? 'small' : screenWidth * 0.09} color={this.props.color} style={{alignSelf: 'center'}} />
         </View>
-        {this.props.message !== '' && this.props.message != null && <Text style={{fontSize: 20, color: 'white', textAlign: 'center', marginTop: 5}}>
+        {this.props.message !== '' && this.props.message != null && <Text style={[{fontSize: 20, color: 'white', textAlign: 'center', marginTop: 5}, this.props.messageStyle]}>
           {this.props.message}
         </Text>}
       </TouchableOpacity>
@@ -51,13 +51,23 @@ class FetchingIndicator extends Component {
 FetchingIndicator.propTypes = {
   isFetching: PropTypes.bool,
   cancelable: PropTypes.bool,
-  message: PropTypes.string
+  color: PropTypes.string,
+  message: PropTypes.string,
+  messageStyle: Text.propTypes.style,
+  backdropColor: PropTypes.string,
+  backdropActiveOpacity: PropTypes.number,
+  onBackdropPress: PropTypes.func
 }
 
 FetchingIndicator.defaultProps = {
   isFetching: false,
   cancelable: false,
-  message: null
+  color: undefined,
+  message: null,
+  messageStyle: {},
+  backdropColor: 'rgba(0, 0, 0, 0.50)',
+  backdropActiveOpacity: 0.8,
+  onBackdropPress: () => null
 }
 
 export default FetchingIndicator

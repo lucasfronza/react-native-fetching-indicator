@@ -1,6 +1,6 @@
 {
   "name": "react-native-fetching-indicator",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "Fetching indicator component for React Native applications",
   "main": "index.js",
   "scripts": {

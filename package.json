@@ -2,9 +2,10 @@
   "name": "react-native-fetching-indicator",
   "version": "0.2.0",
   "description": "Fetching indicator component for React Native applications",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "node_modules/@babel/cli/bin/babel.js index.js --out-dir lib --copy-files"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,20 @@
   },
   "homepage": "https://github.com/lucasfronza/react-native-fetching-indicator#readme",
   "dependencies": {
+    "@babel/runtime": "^7.4.2",
     "prop-types": "15.6.2"
+  },
+  "standard": {
+    "ignore": [
+      "lib/"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-transform-runtime": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0"
   }
 }
